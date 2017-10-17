@@ -1,0 +1,11 @@
+
+
+table {
+  /*border: solid 3px black;*/
+}
+
+th {
+  border: 10px black solid;
+  width: 150px;
+  height: 150px;
+}
