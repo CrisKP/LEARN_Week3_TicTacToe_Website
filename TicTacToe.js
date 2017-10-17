@@ -3,7 +3,12 @@ $(document).ready( function(){
   var isItXTurn = true;
   var isGameWon = false;
   var isGameDrawn = false;
-
+  var player1;
+  var player2;
+  player1 = prompt("Player 1, please enter your name:", "NAME");
+  player2 = prompt("Player 2, please enter your name:", "NAME");
+  $("#vs").prepend(player1);
+  $("#vs").append(player2);
   var boxChanger = {
     box0: 0,
     box1: 1,
@@ -40,10 +45,10 @@ $(document).ready( function(){
 
   function gameEnd() {
     if (isGameWon && isItXTurn){
-      $("p").text("You, the O player, are the winner!");
+      $("p").text(player2 + " is the winner!");
     }
     if (isGameWon && !isItXTurn){
-      $("p").text("You, the X player, are the winner!");
+      $("p").text(player1 + " is the winner!");
     }
     if (isGameDrawn){
       $("p").text("The game is a draw");
@@ -52,20 +57,18 @@ $(document).ready( function(){
 
  $("th").on("click",function() {
    var index;
-   if ($(this).text() == ("") && isItXTurn == true) {
+   if ($(this).text() == ("") && isItXTurn && !isGameWon && !isGameDrawn) {
      $(this).text("x");
+     $(this).addClass("X")
      isItXTurn = false;
      index = $(this).attr("id");
      board[boxChanger[index]] = 1;
-     console.log(board);
-     console.log(boxChanger[index]);
-   } else if ($(this).text() == ("") && isItXTurn == false) {
+   } else if ($(this).text() == ("") && isItXTurn == false && !isGameWon && !isGameDrawn) {
      $(this).text("o");
      isItXTurn = true;
      index = $(this).attr("id");
      board[boxChanger[index]] = 2;
-     console.log(board);
-     console.log(boxChanger[index]);
+     $(this).addClass("O")
    }
    checkGame();
    gameEnd();
