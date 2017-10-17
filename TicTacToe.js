@@ -4,6 +4,18 @@ $(document).ready( function(){
   var isGameWon = false;
   var isGameDrawn = false;
 
+  var boxChanger = {
+    box0: 0,
+    box1: 1,
+    box2: 2,
+    box3: 3,
+    box4: 4,
+    box5: 5,
+    box6: 6,
+    box7: 7,
+    box8: 8
+  }
+
   function checkGame(){
     if (board[0] !=0 && board[1] != 0 && board[2] !=0 && board[0] == board[1] && board[0] == board[2] && board[1] == board[2]){
       isGameWon = true;
@@ -26,18 +38,43 @@ $(document).ready( function(){
     }
   }
 
+  function gameEnd() {
+    if (isGameWon && isItXTurn){
+      $("p").text("You, the O player, are the winner!");
+    }
+    if (isGameWon && !isItXTurn){
+      $("p").text("You, the X player, are the winner!");
+    }
+    if (isGameDrawn){
+      $("p").text("The game is a draw");
+    }
+  }
+
  $("th").on("click",function() {
+   var index;
    if ($(this).text() == ("") && isItXTurn == true) {
      $(this).text("x");
      isItXTurn = false;
+     index = $(this).attr("id");
+     board[boxChanger[index]] = 1;
+     console.log(board);
+     console.log(boxChanger[index]);
    } else if ($(this).text() == ("") && isItXTurn == false) {
      $(this).text("o");
      isItXTurn = true;
+     index = $(this).attr("id");
+     board[boxChanger[index]] = 2;
+     console.log(board);
+     console.log(boxChanger[index]);
    }
+   checkGame();
+   gameEnd();
+
 
 
  });
 
 
 
-});
+
+ });
