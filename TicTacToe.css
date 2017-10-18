@@ -1,16 +1,19 @@
 * {
   background-color: #E6E8FA;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   text-align: center;
   font-family: fantasy;
   font-size: 6em;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 table {
-  /*border: solid 3px black;*/
-  margin: 0 auto;
+  margin: 25px auto;
 }
 
 th {
@@ -20,7 +23,7 @@ th {
   background-color: white;
 }
 
-th:hover {
+th:hover {                          /*the hover is cool.*/
   box-shadow: 0 0 2px 3px;
   background-color: lightblue;
 }
@@ -46,7 +49,11 @@ th:hover {
 #vs{
   text-align: center;
   font-family: fantasy;
-  text-size: 4em;
+  font-size: 3em;
   color: #FE4164;
   font-weight: bold;
+  padding-top: 0;
+  margin-top: 0;
 }
+
+/*Love the styling!!!*/

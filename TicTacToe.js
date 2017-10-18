@@ -7,8 +7,10 @@ $(document).ready( function(){
   var player2;
   player1 = prompt("Player 1, please enter your name:", "NAME");
   player2 = prompt("Player 2, please enter your name:", "NAME");
+  // We like this :).
   $("#vs").prepend(player1);
   $("#vs").append(player2);
+  // Using an object to set each box variable.
   var boxChanger = {
     box0: 0,
     box1: 1,
@@ -20,7 +22,7 @@ $(document).ready( function(){
     box7: 7,
     box8: 8
   }
-
+// - Used object for game then used boolean for game checker.
   function checkGame(){
     if (board[0] !=0 && board[1] != 0 && board[2] !=0 && board[0] == board[1] && board[0] == board[2] && board[1] == board[2]){
       isGameWon = true;
@@ -42,7 +44,7 @@ $(document).ready( function(){
     isGameDrawn = true;
     }
   }
-
+  // Determining the winner.
   function gameEnd() {
     if (isGameWon && isItXTurn){
       $("p").text(player2 + " is the winner!");
@@ -54,12 +56,14 @@ $(document).ready( function(){
       $("p").text("The game is a draw");
     }
   }
-
+// Mind == blown
+// On click of TH, if the box is empty then enter an X or O.  If not, then nothing happens.  That's an easy way to stop it.
  $("th").on("click",function() {
    var index;
    if ($(this).text() == ("") && isItXTurn && !isGameWon && !isGameDrawn) {
      $(this).text("x");
      $(this).addClass("X")
+     //adding class to the target on the fly, and styling it with css was a nice touch. ;)
      isItXTurn = false;
      index = $(this).attr("id");
      board[boxChanger[index]] = 1;
@@ -70,6 +74,7 @@ $(document).ready( function(){
      board[boxChanger[index]] = 2;
      $(this).addClass("O")
    }
+   //This is what runs and ends the game
    checkGame();
    gameEnd();
 
